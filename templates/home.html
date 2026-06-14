@@ -1,0 +1,252 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<div style="
+    background: linear-gradient(135deg, #0B1F3A 0%, #12305A 55%, rgba(14,159,140,0.25) 100%);
+    border-radius: 24px;
+    padding: 72px 60px;
+    margin-bottom: 56px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(11,31,58,0.25), 0 4px 16px rgba(14,159,140,0.15);
+">
+    <!-- Decorative circles -->
+    <div style="position:absolute;top:-80px;right:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(14,159,140,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+    <div style="position:absolute;bottom:-60px;left:40%;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(245,166,35,0.07) 0%,transparent 70%);pointer-events:none;"></div>
+
+    <!-- Animated tooth icon -->
+    <div style="
+        width: 80px; height: 80px;
+        background: linear-gradient(135deg, #0E9F8C, #12BDA8);
+        border-radius: 22px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 36px;
+        margin-bottom: 28px;
+        box-shadow: 0 8px 24px rgba(14,159,140,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+        animation: floatIcon 4s ease-in-out infinite;
+    ">🦷</div>
+
+    <div style="max-width: 640px;">
+        <div style="
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(14,159,140,0.15);
+            border: 1px solid rgba(14,159,140,0.3);
+            border-radius: 30px;
+            padding: 6px 16px;
+            margin-bottom: 20px;
+        ">
+            <span style="width:6px;height:6px;border-radius:50%;background:#0E9F8C;display:inline-block;"></span>
+            <span style="color:#12BDA8;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Tuvvur, Kerala</span>
+        </div>
+
+        <h1 style="
+            font-family: 'Playfair Display', serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: #FFFFFF;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        ">
+            Shifa Dental<br>
+            <span style="color: #12BDA8;">Clinic</span>
+        </h1>
+
+        <p style="color:rgba(255,255,255,0.6);font-size:15px;font-weight:400;margin-bottom:6px;">
+            Dr. Anees VP &nbsp;·&nbsp; BDS
+        </p>
+
+        <p style="color:rgba(255,255,255,0.45);font-size:14px;margin-bottom:36px;line-height:1.6;">
+            Professional dental care with a gentle touch.<br>
+            Your smile is our priority.
+        </p>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+            <a href="/register" style="
+                background: linear-gradient(135deg, #0E9F8C, #12BDA8);
+                color: #fff;
+                text-decoration: none;
+                border-radius: 12px;
+                padding: 14px 28px;
+                font-weight: 600;
+                font-size: 15px;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                box-shadow: 0 6px 20px rgba(14,159,140,0.4);
+                transition: all 0.25s ease;
+            " onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 28px rgba(14,159,140,0.5)'"
+               onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 6px 20px rgba(14,159,140,0.4)'">
+                <i class="bi bi-person-plus-fill"></i>
+                Register Patient
+            </a>
+
+            <a href="/appointment" style="
+                background: rgba(255,255,255,0.07);
+                border: 1.5px solid rgba(255,255,255,0.2);
+                color: #fff;
+                text-decoration: none;
+                border-radius: 12px;
+                padding: 13px 26px;
+                font-weight: 600;
+                font-size: 15px;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                transition: all 0.25s ease;
+            " onmouseover="this.style.background='rgba(255,255,255,0.13)';this.style.transform='translateY(-2px)'"
+               onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.transform='translateY(0)'">
+                <i class="bi bi-calendar-check"></i>
+                Book Appointment
+            </a>
+        </div>
+    </div>
+
+    <!-- Contact chip (top right) -->
+    <div style="
+        position: absolute;
+        top: 32px; right: 40px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 14px;
+        padding: 14px 18px;
+        text-align: center;
+    ">
+        <div style="color: rgba(255,255,255,0.45);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:6px;">Call Us</div>
+        <a href="tel:+919946562534" style="color:#12BDA8;font-size:16px;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:6px;">
+            <i class="bi bi-telephone-fill" style="font-size:14px;"></i>
+            +91 99465 62534
+        </a>
+    </div>
+</div>
+
+<!-- QUICK ACTIONS -->
+<h2 style="font-size:20px;font-weight:700;color:#0B1F3A;margin-bottom:24px;">
+    Quick Actions
+</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-bottom:56px;">
+
+    <!-- Register Patient -->
+    <a href="/register" style="text-decoration:none;">
+        <div style="
+            background:#fff;
+            border-radius:16px;
+            padding:26px 24px;
+            border:1px solid rgba(14,159,140,0.12);
+            box-shadow:0 4px 16px rgba(11,31,58,0.08);
+            transition:all 0.3s ease;
+            cursor:pointer;
+        " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(11,31,58,0.15),0 4px 12px rgba(14,159,140,0.12)'"
+           onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 16px rgba(11,31,58,0.08)'">
+            <div style="width:48px;height:48px;background:#E0F7F4;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;">🧑‍⚕️</div>
+            <div style="font-size:15px;font-weight:700;color:#0B1F3A;margin-bottom:4px;">Register Patient</div>
+            <div style="font-size:13px;color:#9AA5B4;">Add a new patient record</div>
+        </div>
+    </a>
+
+    <!-- Appointments -->
+    <a href="/appointment" style="text-decoration:none;">
+        <div style="
+            background:#fff;
+            border-radius:16px;
+            padding:26px 24px;
+            border:1px solid rgba(14,159,140,0.12);
+            box-shadow:0 4px 16px rgba(11,31,58,0.08);
+            transition:all 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(11,31,58,0.15),0 4px 12px rgba(14,159,140,0.12)'"
+           onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 16px rgba(11,31,58,0.08)'">
+            <div style="width:48px;height:48px;background:#EEF2FF;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;">📅</div>
+            <div style="font-size:15px;font-weight:700;color:#0B1F3A;margin-bottom:4px;">Book Appointment</div>
+            <div style="font-size:13px;color:#9AA5B4;">Schedule patient visit</div>
+        </div>
+    </a>
+
+    <!-- Patient List -->
+    <a href="/patients" style="text-decoration:none;">
+        <div style="
+            background:#fff;
+            border-radius:16px;
+            padding:26px 24px;
+            border:1px solid rgba(14,159,140,0.12);
+            box-shadow:0 4px 16px rgba(11,31,58,0.08);
+            transition:all 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(11,31,58,0.15),0 4px 12px rgba(14,159,140,0.12)'"
+           onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 16px rgba(11,31,58,0.08)'">
+            <div style="width:48px;height:48px;background:#FFF7E0;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;">👥</div>
+            <div style="font-size:15px;font-weight:700;color:#0B1F3A;margin-bottom:4px;">Patient List</div>
+            <div style="font-size:13px;color:#9AA5B4;">View all registered patients</div>
+        </div>
+    </a>
+
+    <!-- Dashboard -->
+    <a href="/dashboard" style="text-decoration:none;">
+        <div style="
+            background: linear-gradient(135deg, #0B1F3A, #12305A);
+            border-radius:16px;
+            padding:26px 24px;
+            border:1px solid rgba(14,159,140,0.2);
+            box-shadow:0 4px 16px rgba(11,31,58,0.2);
+            transition:all 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(11,31,58,0.35)'"
+           onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 16px rgba(11,31,58,0.2)'">
+            <div style="width:48px;height:48px;background:rgba(245,166,35,0.15);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;">📊</div>
+            <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;">Dashboard</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.5);">Reports & analytics</div>
+        </div>
+    </a>
+
+</div>
+
+<!-- INFO ROW -->
+<div style="
+    background: linear-gradient(135deg, rgba(14,159,140,0.06), rgba(11,31,58,0.04));
+    border-radius:20px;
+    border:1px solid rgba(14,159,140,0.15);
+    padding:32px 36px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:32px;
+    align-items:center;
+    justify-content:space-between;
+">
+    <div style="display:flex;align-items:center;gap:14px;">
+        <div style="width:44px;height:44px;background:#E0F7F4;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;">🦷</div>
+        <div>
+            <div style="font-size:13px;color:#9AA5B4;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Clinic</div>
+            <div style="font-size:15px;font-weight:700;color:#0B1F3A;">Shifa Dental Clinic</div>
+        </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;">
+        <div style="width:44px;height:44px;background:#EEF2FF;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;">👨‍⚕️</div>
+        <div>
+            <div style="font-size:13px;color:#9AA5B4;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Doctor</div>
+            <div style="font-size:15px;font-weight:700;color:#0B1F3A;">Dr. Anees VP</div>
+        </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;">
+        <div style="width:44px;height:44px;background:#FFF0E0;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;">📞</div>
+        <div>
+            <div style="font-size:13px;color:#9AA5B4;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Phone</div>
+            <a href="tel:+919946562534" style="font-size:15px;font-weight:700;color:#0B1F3A;text-decoration:none;">+91 99465 62534</a>
+        </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;">
+        <div style="width:44px;height:44px;background:#F0FEF4;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;">📍</div>
+        <div>
+            <div style="font-size:13px;color:#9AA5B4;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Location</div>
+            <div style="font-size:15px;font-weight:700;color:#0B1F3A;">Tuvvur, Kerala</div>
+        </div>
+    </div>
+</div>
+
+<style>
+@keyframes floatIcon {
+    0%,100% { transform: translateY(0px) rotate(0deg); }
+    50%      { transform: translateY(-10px) rotate(3deg); }
+}
+</style>
+
+{% endblock %}

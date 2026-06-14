@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Page Header -->
+<div class="page-header">
+    <div class="container">
+        <h1><i class="bi bi-speedometer2 me-2"></i>Financial Dashboard</h1>
+        <p>Clinic revenue, expenses and profit overview</p>
+    </div>
+</div>
+
+<!-- Stat Cards -->
+<div class="row g-4 mb-5">
+
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon stat-icon-teal">
+                <i class="bi bi-arrow-up-circle-fill"></i>
+            </div>
+            <div class="stat-label">Total Income</div>
+            <div class="stat-value" style="color: #0E9F8C;">₹ {{ income }}</div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon" style="background:#fff0f0;color:#e53e3e;">
+                <i class="bi bi-arrow-down-circle-fill"></i>
+            </div>
+            <div class="stat-label">Total Expense</div>
+            <div class="stat-value" style="color: #e53e3e;">₹ {{ expense }}</div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="stat-card" style="background: linear-gradient(135deg, #0B1F3A, #12305A); border-color: rgba(14,159,140,0.3);">
+            <div class="stat-icon" style="background:rgba(245,166,35,0.15);color:#F5A623;">
+                <i class="bi bi-graph-up-arrow"></i>
+            </div>
+            <div class="stat-label" style="color: rgba(255,255,255,0.5);">Net Profit</div>
+            <div class="stat-value" style="color: #F5A623;">₹ {{ profit }}</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Download Reports -->
+<div class="shifa-card">
+    <div class="shifa-card-header">
+        <h5 style="margin:0;font-weight:600;display:flex;align-items:center;gap:10px;">
+            <i class="bi bi-download"></i> Download Reports
+        </h5>
+    </div>
+    <div class="shifa-card-body">
+        <p style="color:#9AA5B4;font-size:14px;margin-bottom:20px;">
+            Export clinic financial data for any period
+        </p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+
+            <a href="/weekly-report/" class="btn-shifa-secondary">
+                <i class="bi bi-calendar-week"></i> Weekly Report
+            </a>
+
+            <a href="/monthly-report/" class="btn-shifa-primary">
+                <i class="bi bi-calendar-month"></i> Monthly Report
+            </a>
+
+            <a href="/annual-report/" style="
+                background: linear-gradient(135deg, #F5A623, #e8940d);
+                color: #0B1F3A;
+                text-decoration: none;
+                border-radius: 10px;
+                padding: 11px 22px;
+                font-weight: 600;
+                font-size: 14px;
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                box-shadow: 0 4px 12px rgba(245,166,35,0.3);
+                transition: all 0.2s ease;
+            " onmouseover="this.style.transform='translateY(-2px)'"
+               onmouseout="this.style.transform='translateY(0)'">
+                <i class="bi bi-calendar-range"></i> Annual Report
+            </a>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

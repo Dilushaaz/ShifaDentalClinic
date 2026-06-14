@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Page Header -->
+<div class="page-header">
+    <div class="container">
+        <h1><i class="bi bi-people me-2"></i>Registered Patients</h1>
+        <p>Browse, search and manage all patient records</p>
+    </div>
+</div>
+
+<!-- Search Bar -->
+<div class="shifa-card mb-4">
+    <div class="shifa-card-body" style="padding: 18px 24px;">
+        <form method="GET" style="display:flex;gap:12px;align-items:center;">
+            <div style="position:relative;flex:1;">
+                <i class="bi bi-search" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#9AA5B4;font-size:15px;"></i>
+                <input
+                    class="form-control"
+                    style="padding-left:40px;"
+                    type="text"
+                    name="search"
+                    placeholder="Search by name or phone...">
+            </div>
+            <button class="btn-shifa-primary" type="submit">
+                <i class="bi bi-search"></i> Search
+            </button>
+            <a href="/patients" class="btn-shifa-secondary">
+                <i class="bi bi-x-circle"></i> Clear
+            </a>
+        </form>
+    </div>
+</div>
+
+<!-- Patient Table -->
+<div class="shifa-card">
+    <div class="shifa-card-header" style="display:flex;align-items:center;justify-content:space-between;">
+        <h5 style="margin:0;font-weight:600;display:flex;align-items:center;gap:10px;">
+            <i class="bi bi-table"></i> Patient Records
+        </h5>
+        <a href="/register" class="btn-shifa-primary" style="font-size:13px;padding:8px 16px;">
+            <i class="bi bi-person-plus-fill"></i> Add Patient
+        </a>
+    </div>
+    <div style="overflow-x:auto;">
+        <table class="shifa-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th><i class="bi bi-person me-1"></i>Name</th>
+                    <th><i class="bi bi-calendar me-1"></i>Age</th>
+                    <th><i class="bi bi-telephone me-1"></i>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in patients %}
+                <tr>
+                    <td style="color:#9AA5B4;font-size:13px;">{{ forloop.counter }}</td>
+                    <td>
+                        <div style="display:flex;align-items:center;gap:10px;">
+                            <div style="width:34px;height:34px;border-radius:50%;background:#E0F7F4;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#0E9F8C;flex-shrink:0;">
+                                {{ patient.name|slice:":1"|upper }}
+                            </div>
+                            <span style="font-weight:600;color:#0B1F3A;">{{ patient.name }}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="badge-shifa badge-navy">{{ patient.age }} yrs</span>
+                    </td>
+                    <td style="color:#4A5568;">
+                        <i class="bi bi-telephone me-1" style="color:#0E9F8C;"></i>{{ patient.phone }}
+                    </td>
+                    <td>
+                        <div style="display:flex;gap:8px;">
+                            <a href="/edit-patient/{{ patient.id }}/" style="
+                                background:#FFF7E0;color:#b45309;border:1px solid #fcd34d;
+                                border-radius:8px;padding:5px 12px;font-size:13px;font-weight:600;
+                                text-decoration:none;display:inline-flex;align-items:center;gap:5px;
+                                transition:all 0.2s;
+                            " onmouseover="this.style.background='#fcd34d'" onmouseout="this.style.background='#FFF7E0'">
+                                <i class="bi bi-pencil-fill"></i> Edit
+                            </a>
+                            <a href="/delete-patient/{{ patient.id }}/"
+                               onclick="return confirm('Delete {{ patient.name }}? This cannot be undone.')"
+                               style="
+                                background:#fff0f0;color:#b91c1c;border:1px solid #fca5a5;
+                                border-radius:8px;padding:5px 12px;font-size:13px;font-weight:600;
+                                text-decoration:none;display:inline-flex;align-items:center;gap:5px;
+                                transition:all 0.2s;
+                            " onmouseover="this.style.background='#fca5a5'" onmouseout="this.style.background='#fff0f0'">
+                                <i class="bi bi-trash-fill"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" style="text-align:center;padding:48px;color:#9AA5B4;">
+                        <i class="bi bi-people" style="font-size:40px;display:block;margin-bottom:12px;opacity:0.4;"></i>
+                        No patients found. <a href="/register" style="color:#0E9F8C;font-weight:600;">Register one</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

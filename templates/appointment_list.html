@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Page Header -->
+<div class="page-header">
+    <div class="container">
+        <h1><i class="bi bi-calendar-check me-2"></i>Appointment History</h1>
+        <p>All scheduled and completed appointments</p>
+    </div>
+</div>
+
+<div class="shifa-card">
+    <div class="shifa-card-header" style="display:flex;align-items:center;justify-content:space-between;">
+        <h5 style="margin:0;font-weight:600;display:flex;align-items:center;gap:10px;">
+            <i class="bi bi-table"></i> Appointments
+        </h5>
+        <a href="/appointment" class="btn-shifa-primary" style="font-size:13px;padding:8px 16px;">
+            <i class="bi bi-calendar-plus-fill"></i> New Appointment
+        </a>
+    </div>
+    <div style="overflow-x:auto;">
+        <table class="shifa-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th><i class="bi bi-person me-1"></i>Patient</th>
+                    <th><i class="bi bi-calendar me-1"></i>Date</th>
+                    <th><i class="bi bi-clock me-1"></i>Time</th>
+                    <th><i class="bi bi-clipboard2-heart me-1"></i>Treatment</th>
+                    <th><i class="bi bi-currency-rupee me-1"></i>Fee</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                    <td style="color:#9AA5B4;font-size:13px;">{{ forloop.counter }}</td>
+                    <td>
+                        <div style="display:flex;align-items:center;gap:10px;">
+                            <div style="width:32px;height:32px;border-radius:50%;background:#E0F7F4;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#0E9F8C;flex-shrink:0;">
+                                {{ appointment.patient.name|slice:":1"|upper }}
+                            </div>
+                            <span style="font-weight:600;color:#0B1F3A;">{{ appointment.patient.name }}</span>
+                        </div>
+                    </td>
+                    <td style="color:#4A5568;">
+                        <i class="bi bi-calendar3 me-1" style="color:#0E9F8C;"></i>{{ appointment.date }}
+                    </td>
+                    <td style="color:#4A5568;">
+                        <i class="bi bi-clock me-1" style="color:#0E9F8C;"></i>{{ appointment.time }}
+                    </td>
+                    <td>
+                        <span class="badge-shifa badge-teal">{{ appointment.treatment }}</span>
+                    </td>
+                    <td style="font-weight:700;color:#0B1F3A;">
+                        ₹ {{ appointment.fee }}
+                    </td>
+                    <td>
+                        <a href="/delete-appointment/{{ appointment.id }}/"
+                           onclick="return confirm('Delete this appointment?')"
+                           style="
+                            background:#fff0f0;color:#b91c1c;border:1px solid #fca5a5;
+                            border-radius:8px;padding:5px 12px;font-size:13px;font-weight:600;
+                            text-decoration:none;display:inline-flex;align-items:center;gap:5px;
+                            transition:all 0.2s;
+                        " onmouseover="this.style.background='#fca5a5'" onmouseout="this.style.background='#fff0f0'">
+                            <i class="bi bi-trash-fill"></i> Delete
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" style="text-align:center;padding:48px;color:#9AA5B4;">
+                        <i class="bi bi-calendar-x" style="font-size:40px;display:block;margin-bottom:12px;opacity:0.4;"></i>
+                        No appointments yet. <a href="/appointment" style="color:#0E9F8C;font-weight:600;">Book one</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

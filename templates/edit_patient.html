@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Page Header -->
+<div class="page-header">
+    <div class="container">
+        <h1><i class="bi bi-pencil-square me-2"></i>Edit Patient</h1>
+        <p>Update patient information</p>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="shifa-card">
+            <div class="shifa-card-header" style="display:flex;align-items:center;justify-content:space-between;">
+                <h5 style="margin:0;font-weight:600;display:flex;align-items:center;gap:10px;">
+                    <i class="bi bi-person-gear"></i> Edit Record
+                </h5>
+                {% if patient %}
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <div style="width:34px;height:34px;border-radius:50%;background:rgba(14,159,140,0.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#12BDA8;">
+                        {{ patient.name|slice:":1"|upper }}
+                    </div>
+                    <span style="color:rgba(255,255,255,0.7);font-size:14px;">{{ patient.name }}</span>
+                </div>
+                {% endif %}
+            </div>
+            <div class="shifa-card-body">
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="row g-3">
+
+                        <div class="col-12">
+                            <label class="form-label">
+                                <i class="bi bi-person me-1"></i> Full Name
+                            </label>
+                            <input class="form-control"
+                                   type="text"
+                                   name="name"
+                                   value="{{ patient.name }}"
+                                   placeholder="Patient full name"
+                                   required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">
+                                <i class="bi bi-calendar me-1"></i> Age
+                            </label>
+                            <input class="form-control"
+                                   type="number"
+                                   name="age"
+                                   value="{{ patient.age }}"
+                                   placeholder="Age in years"
+                                   min="0" max="120"
+                                   required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">
+                                <i class="bi bi-gender-ambiguous me-1"></i> Gender
+                            </label>
+                            <select class="form-select" name="gender" required>
+                                <option value="Male"   {% if patient.gender == 'Male'   %}selected{% endif %}>Male</option>
+                                <option value="Female" {% if patient.gender == 'Female' %}selected{% endif %}>Female</option>
+                                <option value="Other"  {% if patient.gender == 'Other'  %}selected{% endif %}>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">
+                                <i class="bi bi-telephone me-1"></i> Phone Number
+                            </label>
+                            <input class="form-control"
+                                   type="text"
+                                   name="phone"
+                                   value="{{ patient.phone }}"
+                                   placeholder="+91 XXXXX XXXXX"
+                                   required>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">
+                                <i class="bi bi-geo-alt me-1"></i> Address
+                            </label>
+                            <textarea class="form-control"
+                                      name="address"
+                                      placeholder="Full address"
+                                      rows="3">{{ patient.address }}</textarea>
+                        </div>
+
+                        <div class="col-12" style="padding-top:8px;">
+                            <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+                                <button class="btn-shifa-primary" type="submit">
+                                    <i class="bi bi-check-circle-fill"></i> Save Changes
+                                </button>
+                                <a href="/patients" class="btn-shifa-secondary">
+                                    <i class="bi bi-arrow-left"></i> Cancel
+                                </a>
+                                <a href="/delete-patient/{{ patient.id }}/"
+                                   onclick="return confirm('Permanently delete {{ patient.name }}?')"
+                                   style="
+                                    background:#fff0f0;color:#b91c1c;border:1.5px solid #fca5a5;
+                                    border-radius:10px;padding:10px 18px;font-size:14px;font-weight:600;
+                                    text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+                                    margin-left:auto;transition:all 0.2s;
+                                " onmouseover="this.style.background='#fee2e2'" onmouseout="this.style.background='#fff0f0'">
+                                    <i class="bi bi-trash-fill"></i> Delete Patient
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

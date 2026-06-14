@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Page Header -->
+<div class="page-header">
+    <div class="container">
+        <h1><i class="bi bi-info-circle me-2"></i>About Us</h1>
+        <p>Learn about Shifa Dental Clinic and our services</p>
+    </div>
+</div>
+
+<div class="row g-4">
+
+    <!-- Doctor Card -->
+    <div class="col-lg-4">
+        <div class="shifa-card h-100">
+            <div style="
+                background: linear-gradient(135deg, #0B1F3A, #12305A);
+                padding: 40px 28px;
+                text-align: center;
+                border-radius: 16px 16px 0 0;
+            ">
+                <div style="
+                    width: 88px; height: 88px;
+                    background: linear-gradient(135deg, #0E9F8C, #12BDA8);
+                    border-radius: 50%;
+                    display: flex; align-items: center; justify-content: center;
+                    font-size: 36px;
+                    margin: 0 auto 20px;
+                    box-shadow: 0 8px 24px rgba(14,159,140,0.4);
+                ">👨‍⚕️</div>
+                <h3 style="color:#fff;font-family:'Playfair Display',serif;font-size:22px;margin-bottom:6px;">Dr. Anees VP</h3>
+                <p style="color:#12BDA8;font-size:13px;font-weight:600;margin-bottom:0;text-transform:uppercase;letter-spacing:1px;">BDS · General Dentist</p>
+            </div>
+            <div class="shifa-card-body">
+                <div style="display:flex;flex-direction:column;gap:14px;">
+                    <div style="display:flex;align-items:center;gap:12px;padding:12px;background:#F8FAFB;border-radius:10px;">
+                        <i class="bi bi-telephone-fill" style="color:#0E9F8C;font-size:18px;"></i>
+                        <div>
+                            <div style="font-size:11px;color:#9AA5B4;font-weight:600;text-transform:uppercase;">Phone</div>
+                            <a href="tel:+919946562534" style="font-size:14px;font-weight:700;color:#0B1F3A;text-decoration:none;">+91 99465 62534</a>
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:12px;padding:12px;background:#F8FAFB;border-radius:10px;">
+                        <i class="bi bi-geo-alt-fill" style="color:#0E9F8C;font-size:18px;"></i>
+                        <div>
+                            <div style="font-size:11px;color:#9AA5B4;font-weight:600;text-transform:uppercase;">Location</div>
+                            <div style="font-size:14px;font-weight:700;color:#0B1F3A;">Tuvvur, Kerala</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About + Services -->
+    <div class="col-lg-8">
+        <div class="shifa-card mb-4">
+            <div class="shifa-card-header">
+                <h5 style="margin:0;font-weight:600;display:flex;align-items:center;gap:10px;">
+                    <i class="bi bi-hospital"></i> About the Clinic
+                </h5>
+            </div>
+            <div class="shifa-card-body">
+                <p style="color:#4A5568;font-size:15px;line-height:1.8;margin:0;">
+                    Shifa Dental Clinic provides quality dental care under the guidance of
+                    <strong style="color:#0B1F3A;">Dr. Anees VP</strong>, bringing professional
+                    dental services to the community of Tuvvur, Kerala. We are committed to
+                    delivering gentle, patient-centred care using modern techniques.
+                </p>
+            </div>
+        </div>
+
+        <div class="shifa-card">
+            <div class="shifa-card-header">
+                <h5 style="margin:0;font-weight:600;display:flex;align-items:center;gap:10px;">
+                    <i class="bi bi-clipboard2-pulse"></i> Our Services
+                </h5>
+            </div>
+            <div class="shifa-card-body">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+
+                    {% for service, icon in services_list %}
+                    {% empty %}
+                    <!-- Default services -->
+                    {% endfor %}
+
+                    <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#F8FAFB;border-radius:12px;border:1px solid rgba(14,159,140,0.1);">
+                        <div style="width:36px;height:36px;background:#E0F7F4;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🦷</div>
+                        <span style="font-size:14px;font-weight:600;color:#0B1F3A;">Dental Checkups</span>
+                    </div>
+
+                    <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#F8FAFB;border-radius:12px;border:1px solid rgba(14,159,140,0.1);">
+                        <div style="width:36px;height:36px;background:#E0F7F4;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">✨</div>
+                        <span style="font-size:14px;font-weight:600;color:#0B1F3A;">Cleaning</span>
+                    </div>
+
+                    <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#F8FAFB;border-radius:12px;border:1px solid rgba(14,159,140,0.1);">
+                        <div style="width:36px;height:36px;background:#EEF2FF;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🩺</div>
+                        <span style="font-size:14px;font-weight:600;color:#0B1F3A;">Root Canal Treatment</span>
+                    </div>
+
+                    <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#F8FAFB;border-radius:12px;border:1px solid rgba(14,159,140,0.1);">
+                        <div style="width:36px;height:36px;background:#FFF0F0;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🔧</div>
+                        <span style="font-size:14px;font-weight:600;color:#0B1F3A;">Tooth Extraction</span>
+                    </div>
+
+                    <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#F8FAFB;border-radius:12px;border:1px solid rgba(14,159,140,0.1);">
+                        <div style="width:36px;height:36px;background:#FFF7E0;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">😁</div>
+                        <span style="font-size:14px;font-weight:600;color:#0B1F3A;">Orthodontic Consultation</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

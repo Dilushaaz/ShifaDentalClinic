@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Page Header -->
+<div class="page-header">
+    <div class="container">
+        <h1><i class="bi bi-person-plus-fill me-2"></i>Register Patient</h1>
+        <p>Add a new patient to the clinic records</p>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="shifa-card">
+            <div class="shifa-card-header">
+                <h5 style="margin:0;font-weight:600;display:flex;align-items:center;gap:10px;">
+                    <i class="bi bi-clipboard2-pulse"></i> Patient Information
+                </h5>
+            </div>
+            <div class="shifa-card-body">
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="row g-3">
+
+                        <div class="col-12">
+                            <label class="form-label">
+                                <i class="bi bi-person me-1"></i> Full Name
+                            </label>
+                            <input class="form-control" type="text" name="name" placeholder="Enter patient's full name" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">
+                                <i class="bi bi-calendar me-1"></i> Age
+                            </label>
+                            <input class="form-control" type="number" name="age" placeholder="Age in years" min="0" max="120" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">
+                                <i class="bi bi-gender-ambiguous me-1"></i> Gender
+                            </label>
+                            <select class="form-select" name="gender" required>
+                                <option value="" disabled selected>Select gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">
+                                <i class="bi bi-telephone me-1"></i> Phone Number
+                            </label>
+                            <input class="form-control" type="text" name="phone" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">
+                                <i class="bi bi-geo-alt me-1"></i> Address
+                            </label>
+                            <textarea class="form-control" name="address" placeholder="Full address" rows="3"></textarea>
+                        </div>
+
+                        <div class="col-12" style="padding-top:8px;">
+                            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                                <button class="btn-shifa-primary" type="submit">
+                                    <i class="bi bi-check-circle-fill"></i> Register Patient
+                                </button>
+                                <a href="/patients" class="btn-shifa-secondary">
+                                    <i class="bi bi-arrow-left"></i> Back to List
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
